@@ -111,11 +111,11 @@ int fileEdit::checkFile() const
 	return checkFile;
 }
 
-std::string fileEdit::getFirstName()
+std::string fileEdit::getFirstName() const
 {
 	return firstName;
 }
-std::string fileEdit::getFileType()
+std::string fileEdit::getFileType() const
 {
 	return fileType;
 }

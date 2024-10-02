@@ -10,8 +10,8 @@ public:
     void fileRead(std::string buf, std::string name);
     void lineDelete(int lineToDelete, std::string Buf, int currentLine, std::string name);
     int checkFile() const;
-    std::string getFirstName();
-    std::string getFileType();
+    std::string getFirstName() const;
+    std::string getFileType() const;
     void setFirstName(std::string_view name);
     void setFileType(std::string_view type);
 
