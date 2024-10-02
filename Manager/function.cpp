@@ -35,7 +35,7 @@ void deleteAfterTime()
     cout << "Enter destination to the file and name" << "\n";
     rewind(stdin);
     std::getline(std::cin, *nameOfFile);
-    std::string destination = "H:\\лфбораторные\\FileManager\\FileManager\\" + *nameOfFile;
+    std::string destination = "H:\\Course\\Manager\\Manager" + *nameOfFile;
     std::string endDestination = "H:\\лфбораторные\\Buf\\" + *nameOfFile;
     rewind(stdin);
     MoveFileA(destination.c_str(), endDestination.c_str());

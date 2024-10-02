@@ -1,7 +1,7 @@
 #include "fileEdit.h"
 using namespace std;
 
-fileEdit::fileEdit(const std::string& firstName, const std::string& fileType, const std::string& information, const int totalLineCount = 0) : firstName(firstName), fileType(fileType), information(information), totalLineCount(totalLineCount)
+fileEdit::fileEdit(const std::string& firstName, const std::string& fileType, const std::string& information, const int totalLineCount = 0) : totalLineCount(totalLineCount), firstName(firstName), fileType(fileType), information(information)
 {
 
 }

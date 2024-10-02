@@ -29,7 +29,7 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fileedit.h">
+    <ClInclude Include="fileEdit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
