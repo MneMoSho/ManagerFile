@@ -119,11 +119,11 @@ std::string fileEdit::getFileType()
 {
 	return fileType;
 }
-void fileEdit::setFirstName(std::string& name)
+void fileEdit::setFirstName(const std::string& name)
 {
 	firstName = name;
 }
-void fileEdit::setFileType(std::string& type)
+void fileEdit::setFileType(const std::string& type)
 {
 	fileType = type;
 }
