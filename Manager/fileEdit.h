@@ -12,8 +12,8 @@ public:
     int checkFile() const;
     std::string getFirstName();
     std::string getFileType();
-    void setFirstName(const std::string& name);
-    void setFileType(const std::string& type);
+    void setFirstName(std::string_view& name);
+    void setFileType(std::string_view& type);
 
 private:
 
