@@ -32,17 +32,13 @@ public:
 
 	void operator -= (const FileEdit& fileToDelete)
 	{
-		if (fileToDelete.extension == this->extension)
+		if (fileToDelete.extension == this->extension && remove(fileToDelete.firstName.c_str()) == 0)
 		{
-			if (remove(fileToDelete.firstName.c_str()) == 0)
-			{
-				std::cout << " file is removed" << "\n";
-			}
-			
+			std::cout << " file is removed" << "\n";
 		}
 	}
 
-protected:
+private:
 	std::ifstream fin;
 	std::ofstream fout;
 	int totalLineCount = 0;
