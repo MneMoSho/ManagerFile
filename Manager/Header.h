@@ -10,11 +10,17 @@
 #include <winbase.h>
 #include <filesystem>
 
-void deleteFile();
+
+void deleteFile(const std::string& directory);
 int linesNumber(int numberOfLines);
-void createNewfile(int numberOfLines);
-void updateAnExisted(int numberOfLines);
-void deleteFromExisting();
-void readFile();
-void deleteAfterTime();
+void createNewfile(int numberOfLines, const std::string& destination);
+void updateAnExisted(int numberOfLines, const std::string& destination);
+void deleteFromExisting(const std::string& destination);
+void readFile(const std::string& destination);
+void deleteAfterTime(const std::string& directory);
 void movingDelete();
+void addToAnother(std::string destination);
+void deleteSimillarTypeFile(const std::string& destination);
+void newDirectory(std::string* destName);
+void newDirectoryFromFile(std::string* destName);
+void appendingPartsOfPath(std::string* name, const std::string& destination);

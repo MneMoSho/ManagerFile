@@ -1,13 +1,13 @@
-#include "fileEdit.h"
+#include "FileEdit.h"
 using namespace std;
 
-fileEdit::fileEdit(const std::string& firstName, const std::string& fileType, const std::string& information, const int totalLineCount = 0) : totalLineCount(totalLineCount), firstName(firstName), fileType(fileType), information(information)
+FileEdit::FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount = 0) : totalLineCount(totalLineCount), firstName(firstName), information(information)
 {
 
 }
-fileEdit::~fileEdit() = default;
+FileEdit::~FileEdit() = default;
 
-void fileEdit::fileCreate(int numberOfLines, const std::string& name)
+void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 {
 	fout.open(name);
 	if (int fileOpened = checkFile(); fileOpened != 1)
@@ -24,11 +24,12 @@ void fileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.close();
 }
 
-void fileEdit::fileUpdate(int numberOfLines, std::string name)
+ void FileEdit::fileUpdate(int numberOfLines, std::string name, std::string destination)
 {
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
+	appendingPartsOfPath(&name, destination);
 	fout.open(name, std::ofstream::app);
 	if (int fileOpened = checkFile(); fileOpened != 1)
 	{
@@ -46,11 +47,12 @@ void fileEdit::fileUpdate(int numberOfLines, std::string name)
 	fout.close();
 }
 
-void fileEdit::fileRead(std::string buf, std::string name)
+void FileEdit::fileRead(std::string buf, std::string name, std::string destination)
 {
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
+	appendingPartsOfPath(&name, destination);
 	fin.open(name);
 	rewind(stdin);
 	if (int fileOpened = checkFile(); fileOpened != 1)
@@ -68,11 +70,13 @@ void fileEdit::fileRead(std::string buf, std::string name)
 	fin.close();
 }
 
-void fileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, std::string name)
+void FileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, std::string destination)
 {
+	std::string name;
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
+	appendingPartsOfPath(&name, destination);
 	rewind(stdin);
 	fin.open(name);
 	fout.open("test.txt");
@@ -90,7 +94,6 @@ void fileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, st
 	}
 	fin.close();
 	fout.close();
-
 	fout.open(name);
 	fin.open("test.txt");
 	while (std::getline(fin, Buf))
@@ -101,7 +104,7 @@ void fileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, st
 	fin.close();
 }
 
-int fileEdit::checkFile() const
+int FileEdit::checkFile() const
 {
 	int checkFile = 0;
 	if (fout.is_open() || fin.is_open())
@@ -111,20 +114,11 @@ int fileEdit::checkFile() const
 	return checkFile;
 }
 
-std::string fileEdit::getFirstName() const
+std::string FileEdit::getFirstName() const
 {
 	return firstName;
 }
-std::string fileEdit::getFileType() const
-{
-	return fileType;
-}
-void fileEdit::setFirstName(std::string_view name)
+void FileEdit::setFirstName(std::string_view name)
 {
 	firstName = name;
 }
-void fileEdit::setFileType(std::string_view type)
-{
-	fileType = type;
-}
-

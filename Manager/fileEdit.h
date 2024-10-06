@@ -1,27 +1,52 @@
 #include "Header.h"
+namespace fs = std::filesystem;
 
-class fileEdit
+class FileEdit
 {
 public:
-	fileEdit(const std::string& firstName, const std::string& fileType, const std::string& information, const int totalLineCount);
-	~fileEdit();
+	FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount);
+	~FileEdit();
 	void fileCreate(int numberOfLines, const std::string& name);
-	void fileUpdate(int numberOfLines, std::string name);
-	void fileRead(std::string buf, std::string name);
+	void fileUpdate(int numberOfLines, std::string name, std::string destination);
+	void fileRead(std::string buf, std::string name, std::string destination);
 	void lineDelete(int lineToDelete, std::string Buf, int currentLine, std::string name);
 	int checkFile() const;
 	std::string getFirstName() const;
-	std::string getFileType() const;
 	void setFirstName(std::string_view name);
-	void setFileType(std::string_view type);
+	void friend checkForSimillarity(FileEdit& objectCreate, const std::string& destination, std::string *nameFile);
+	void friend deleteSimillarTypeFile(const std::string& destination);
+	FileEdit& operator += (const FileEdit& fileToCopy)
+	{
+		fin.open(fileToCopy.firstName, std::ios::binary);
+		fout.open(this->firstName, std::ofstream::app);
+		fout << fin.rdbuf();
+		fout.close();
+		fin.close();
+		return *this;
+	}
 
-private:
+	bool operator ==(const FileEdit &nameOfFile) const
+	{
+		return this->firstName == nameOfFile.firstName;
+	}
 
+	void operator -= (const FileEdit& fileToDelete)
+	{
+		if (fileToDelete.extension == this->extension)
+		{
+			if (remove(fileToDelete.firstName.c_str()) == 0)
+			{
+				std::cout << " file is removed" << "\n";
+			}
+			
+		}
+	}
+
+protected:
 	std::ifstream fin;
 	std::ofstream fout;
 	int totalLineCount = 0;
 	std::string firstName;
-	std::string fileType;
 	std::string information;
-
+	std::string extension;
 };

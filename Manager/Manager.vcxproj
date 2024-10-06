@@ -131,10 +131,12 @@
     <ClCompile Include="fileEdit.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Path.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fileEdit.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="Path.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
