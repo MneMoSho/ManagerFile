@@ -101,13 +101,13 @@ void addToAnother(const std::string& destination)
     cin >> nameBegin;
     appendingPartsOfPath(&nameBegin, destination);
     fileBegin->setFirstName(nameBegin);
-    cout << "Enter name of file to which you'd like to copy" << " ";
+    cout << "Enter name of file from which you'd like to copy" << " ";
     cin >> nameToCopy;
     appendingPartsOfPath(&nameToCopy, destination);
     filetoCopy->setFirstName(nameToCopy);
     if (fs::exists(destination))
     {
-        std::cout << "correct";
+        std::cout << "File is copied successfully" << "\n";
         *fileBegin += *filetoCopy;
     }
     else
@@ -126,7 +126,7 @@ void checkForSimillarity(const FileEdit& objectCreate, const std::string& destin
         objectToCheck->firstName = iterator->path().filename().string();
         if (*objectToCheck == objectCreate)
         {
-            cout << "This name is already exists ";
+            cout << "This name is already exists enter another one";
             cin >> title;
             rewind(stdin);
             *nameFile = title;
@@ -139,7 +139,7 @@ void deleteSimillarTypeFile(const std::string& destination)
     std::string fullName = destination + "\\";
     auto toDelete = std::make_unique<FileEdit>("start.txt", "start", 0);
     auto typeToDelete = std::make_unique<FileEdit>("start.txt", "start", 0);
-    cout << "Enter type of file ypu'd like to add ";
+    cout << "Enter type of file ypu'd like to remove ";
     rewind(stdin);
     cin >> toDelete->extension;
     for (const auto& entry : fs::directory_iterator(fullName))

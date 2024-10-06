@@ -17,9 +17,13 @@ public:
 	void friend deleteSimillarTypeFile(const std::string& destination);
 	FileEdit& operator += (const FileEdit& fileToCopy)
 	{
+		std::string line;
 		fin.open(fileToCopy.firstName, std::ios::binary);
 		fout.open(this->firstName, std::ofstream::app);
-		fout << fin.rdbuf();
+		while (std::getline(fin, line))
+		{
+			fout << line;
+		}
 		fout.close();
 		fin.close();
 		return *this;
