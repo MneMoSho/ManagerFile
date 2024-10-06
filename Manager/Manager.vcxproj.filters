@@ -21,7 +21,7 @@
     <ClCompile Include="function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fileEdit.cpp">
+    <ClCompile Include="FileEdit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
@@ -32,7 +32,7 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fileEdit.h">
+    <ClInclude Include="FileEdit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Path.h">

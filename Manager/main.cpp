@@ -1,5 +1,5 @@
 #include "Header.h"
-#include "fileEdit.h"
+#include "FileEdit.h"
 #include "Path.h"
 using namespace std;
 namespace fs = std::filesystem;

@@ -128,13 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="fileEdit.cpp" />
+    <ClCompile Include="FileEdit.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Path.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fileEdit.h" />
+    <ClInclude Include="FileEdit.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Path.h" />
   </ItemGroup>
