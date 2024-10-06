@@ -24,7 +24,7 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.close();
 }
 
- void FileEdit::fileUpdate(int numberOfLines, std::string name, std::string destination)
+ void FileEdit::fileUpdate(int numberOfLines, std::string name, const std::string& destination)
 {
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
@@ -47,7 +47,7 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.close();
 }
 
-void FileEdit::fileRead(std::string buf, std::string name, std::string destination)
+void FileEdit::fileRead(std::string buf, std::string name, const std::string& destination)
 {
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
@@ -70,7 +70,7 @@ void FileEdit::fileRead(std::string buf, std::string name, std::string destinati
 	fin.close();
 }
 
-void FileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, std::string destination)
+void FileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, const std::string& destination)
 {
 	std::string name;
 	rewind(stdin);
@@ -118,7 +118,7 @@ std::string FileEdit::getFirstName() const
 {
 	return firstName;
 }
-void FileEdit::setFirstName(std::string_view name)
+void FileEdit::setFirstName(const std::string_view& name)
 {
 	firstName = name;
 }

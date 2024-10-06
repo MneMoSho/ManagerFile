@@ -7,12 +7,12 @@ public:
 	FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount);
 	~FileEdit();
 	void fileCreate(int numberOfLines, const std::string& name);
-	void fileUpdate(int numberOfLines, std::string name, std::string destination);
-	void fileRead(std::string buf, std::string name, std::string destination);
-	void lineDelete(int lineToDelete, std::string Buf, int currentLine, std::string name);
+	void fileUpdate(int numberOfLines, std::string name, const std::string& destination);
+	void fileRead(std::string buf, std::string name, const std::string& destination);
+	void lineDelete(int lineToDelete, std::string Buf, int currentLine, const std::string& destination);
 	int checkFile() const;
 	std::string getFirstName() const;
-	void setFirstName(std::string_view name);
+	void setFirstName(const std::string_view& name);
 	void friend checkForSimillarity(FileEdit& objectCreate, const std::string& destination, std::string *nameFile);
 	void friend deleteSimillarTypeFile(const std::string& destination);
 	FileEdit& operator += (const FileEdit& fileToCopy)
