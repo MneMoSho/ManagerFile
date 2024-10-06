@@ -91,7 +91,7 @@ void readFile(const std::string& destination)
     objectCreate->fileRead(Buf, objectCreate->getFirstName(), destination);
 }
 
-void addToAnother(std::string destination)
+void addToAnother(const std::string& destination)
 {
     std::string nameBegin;
     std::string nameToCopy;
