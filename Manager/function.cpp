@@ -116,7 +116,7 @@ void addToAnother(const std::string& destination)
     }
 }
 
-void checkForSimillarity(FileEdit& objectCreate, const std::string& destination, std::string* nameFile)
+void checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string* nameFile)
 {
     std::string title;
     auto objectToCheck = std::make_unique<FileEdit>("start.txt","start", 0);
