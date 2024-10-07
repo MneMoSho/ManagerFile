@@ -41,8 +41,8 @@ void deleteAfterTime(const std::string& directory)
     rewind(stdin);
     std::string endDestination = "H:\\лфбораторные\\Buf\\" + nameOfFile;
     appendingPartsOfPath(&nameOfFile, directory);
-    std::cout << nameOfFile<<"\n";
-    std::cout << endDestination <<"\n";
+    std::cout << nameOfFile << "\n";
+    std::cout << endDestination << "\n";
     rewind(stdin);
     MoveFileA(nameOfFile.c_str(), endDestination.c_str());
 }
@@ -91,7 +91,7 @@ void readFile(const std::string& destination)
     objectCreate->fileRead(Buf, objectCreate->getFirstName(), destination);
 }
 
-void addToAnother(const std::string& destination)
+void addToAnother(std::string destination)
 {
     std::string nameBegin;
     std::string nameToCopy;
@@ -101,13 +101,13 @@ void addToAnother(const std::string& destination)
     cin >> nameBegin;
     appendingPartsOfPath(&nameBegin, destination);
     fileBegin->setFirstName(nameBegin);
-    cout << "Enter name of file from which you'd like to copy" << " ";
+    cout << "Enter name of file to which you'd like to copy" << " ";
     cin >> nameToCopy;
     appendingPartsOfPath(&nameToCopy, destination);
     filetoCopy->setFirstName(nameToCopy);
     if (fs::exists(destination))
     {
-        std::cout << "File is copied successfully" << "\n";
+        std::cout << "correct";
         *fileBegin += *filetoCopy;
     }
     else
@@ -116,17 +116,17 @@ void addToAnother(const std::string& destination)
     }
 }
 
-void checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string* nameFile)
+void checkForSimillarity(FileEdit& objectCreate, const std::string& destination, std::string* nameFile)
 {
     std::string title;
-    auto objectToCheck = std::make_unique<FileEdit>("start.txt","start", 0);
+    auto objectToCheck = std::make_unique<FileEdit>("start.txt", "start", 0);
     fs::directory_iterator iterator(destination);
     for (; iterator != fs::end(iterator); iterator++)
     {
         objectToCheck->firstName = iterator->path().filename().string();
         if (*objectToCheck == objectCreate)
         {
-            cout << "This name is already exists enter another one";
+            cout << "This name is already exists ";
             cin >> title;
             rewind(stdin);
             *nameFile = title;
@@ -139,7 +139,7 @@ void deleteSimillarTypeFile(const std::string& destination)
     std::string fullName = destination + "\\";
     auto toDelete = std::make_unique<FileEdit>("start.txt", "start", 0);
     auto typeToDelete = std::make_unique<FileEdit>("start.txt", "start", 0);
-    cout << "Enter type of file ypu'd like to remove ";
+    cout << "Enter type of file ypu'd like to add ";
     rewind(stdin);
     cin >> toDelete->extension;
     for (const auto& entry : fs::directory_iterator(fullName))
@@ -151,41 +151,41 @@ void deleteSimillarTypeFile(const std::string& destination)
     }
 }
 
-void newDirectory(std::string *destName)
+void newDirectory(std::string* destName)
 {
-	std::string name;
-	Path newDir;
-	std::cout << "Enter disk ";
-	std::cin >> name;
+    std::string name;
+    Path newDir;
+    std::cout << "Enter disk ";
+    std::cin >> name;
     newDir.setDisk(name);
     newDir.createWay();
-	std::cout << "Enter folders, press -1 when to stop\n";
-	while (true)
-	{
-		std::cin >> name;
+    std::cout << "Enter folders, press -1 when to stop\n";
+    while (true)
+    {
+        std::cin >> name;
         if (name == "-1")
         {
             break;
         }
-		newDir.createNewPath(name);
-	}
+        newDir.createNewPath(name);
+    }
     rewind(stdin);
-   *destName = newDir.getDestination();
+    *destName = newDir.getDestination();
     newDir.createDirectory();
 }
 
-void newDirectoryFromFile(std::string *destName)
+void newDirectoryFromFile(std::string* destName)
 {
     rewind(stdin);
-	std::ifstream pathIn;
-	Path newDir;
-	pathIn.open("Directory.txt");
-	while (!pathIn.eof())
-	{
-		std::getline(pathIn, *destName);
-	}
-	newDir.setDestination(*destName);
-	newDir.createDirectory();
+    std::ifstream pathIn;
+    Path newDir;
+    pathIn.open("Directory.txt");
+    while (!pathIn.eof())
+    {
+        std::getline(pathIn, *destName);
+    }
+    newDir.setDestination(*destName);
+    newDir.createDirectory();
     pathIn.close();
 }
 

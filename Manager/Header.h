@@ -19,7 +19,7 @@ void deleteFromExisting(const std::string& destination);
 void readFile(const std::string& destination);
 void deleteAfterTime(const std::string& directory);
 void movingDelete();
-void addToAnother(const std::string& destination);
+void addToAnother(std::string destination);
 void deleteSimillarTypeFile(const std::string& destination);
 void newDirectory(std::string* destName);
 void newDirectoryFromFile(std::string* destName);

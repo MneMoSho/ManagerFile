@@ -13,7 +13,7 @@ public:
 	int checkFile() const;
 	std::string getFirstName() const;
 	void setFirstName(const std::string_view& name);
-	void friend checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string *nameFile);
+	void friend checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string* nameFile);
 	void friend deleteSimillarTypeFile(const std::string& destination);
 	FileEdit& operator += (const FileEdit& fileToCopy)
 	{
@@ -29,7 +29,7 @@ public:
 		return *this;
 	}
 
-	bool operator ==(const FileEdit &nameOfFile) const
+	bool operator ==(const FileEdit& nameOfFile) const
 	{
 		return this->firstName == nameOfFile.firstName;
 	}

@@ -4,11 +4,11 @@ class Path
 {
 public:
 	void createWay();
-	void createDirectory() const;
-	void createNewPath(const std::string& name);
-	std::string getDisk() const;
+	void createDirectory();
+	void createNewPath(std::string name);
+	std::string getDisk();
 	void setDisk(std::string_view disk);
-	std::string getDestination() const;
+	std::string getDestination();
 	void setDestination(std::string_view disk);
 private:
 	std::string disk;
