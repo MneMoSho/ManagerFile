@@ -13,4 +13,4 @@
 
 Проект написан на c++
 
-https://sonarcloud.io/summary/new_code?id=MneMoSho_Project1
+https://sonarcloud.io/project/overview?id=MneMoSho_ManagerFile
