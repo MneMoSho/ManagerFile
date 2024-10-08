@@ -1,5 +1,5 @@
 #include "Header.h"
-#include "fileEdit.h"
+#include "FileEdit.h"
 #include "Path.h"
 using namespace std;
 namespace fs = std::filesystem;
@@ -29,9 +29,9 @@ int main()
 
 	while (modeSelect != '0')
 	{
-		if (!fs::exists("H:\\лфбораторные\\Buf "))
+		if (!fs::exists("D:\\учёба\\git\\Buf"))
 		{
-			fs::create_directory("H:\\лфбораторные\\Buf ");
+			fs::create_directory("D:\\учёба\\git\\Buf");
 		}
 		jthread parallelreal(movingDelete);
 		rewind(stdin);

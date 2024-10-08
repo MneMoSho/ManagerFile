@@ -5,14 +5,14 @@ void Path::createWay()
 {
 	destination = disk + ":";
 }
-void Path::createNewPath(std::string name)
+void Path::createNewPath(const std::string& name)
 {
 	if (name != "-1")
 	{
 		destination += "\\" + name;
 	}
 }
-void Path::createDirectory()
+void Path::createDirectory(const std::string& destination) const
 {
 	if (!fs::exists(destination))
 	{
@@ -20,11 +20,11 @@ void Path::createDirectory()
 	}
 }
 
-std::string Path::getDisk()
+std::string Path::getDisk() const
 {
 	return disk;
 }
-std::string Path::getDestination()
+std::string Path::getDestination() const
 {
 	return destination;
 }

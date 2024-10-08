@@ -25,7 +25,7 @@ void deleteFile(const std::string& directory)
 
 void movingDelete()
 {
-    for (const auto& entry : fs::directory_iterator("H:\\лфбораторные\\Buf\\"))
+    for (const auto& entry : fs::directory_iterator("D:\\учёба\\git\\Buf"))
     {
         this_thread::sleep_for(chrono::milliseconds(1000));
         fs::remove_all(entry.path());
@@ -39,7 +39,7 @@ void deleteAfterTime(const std::string& directory)
     rewind(stdin);
     std::cin >> nameOfFile;
     rewind(stdin);
-    std::string endDestination = "H:\\лфбораторные\\Buf\\" + nameOfFile;
+    std::string endDestination = "D:\\учёба\\git\\Buf" + nameOfFile;
     appendingPartsOfPath(&nameOfFile, directory);
     std::cout << nameOfFile << "\n";
     std::cout << endDestination << "\n";
@@ -91,7 +91,7 @@ void readFile(const std::string& destination)
     objectCreate->fileRead(Buf, objectCreate->getFirstName(), destination);
 }
 
-void addToAnother(std::string destination)
+void addToAnother(const std::string& destination)
 {
     std::string nameBegin;
     std::string nameToCopy;
@@ -101,13 +101,13 @@ void addToAnother(std::string destination)
     cin >> nameBegin;
     appendingPartsOfPath(&nameBegin, destination);
     fileBegin->setFirstName(nameBegin);
-    cout << "Enter name of file to which you'd like to copy" << " ";
+    cout << "Enter name of file from which you'd like to copy" << " ";
     cin >> nameToCopy;
     appendingPartsOfPath(&nameToCopy, destination);
     filetoCopy->setFirstName(nameToCopy);
     if (fs::exists(destination))
     {
-        std::cout << "correct";
+        std::cout << "File is copied successfully" << "\n";
         *fileBegin += *filetoCopy;
     }
     else
@@ -116,7 +116,7 @@ void addToAnother(std::string destination)
     }
 }
 
-void checkForSimillarity(FileEdit& objectCreate, const std::string& destination, std::string* nameFile)
+void checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string* nameFile)
 {
     std::string title;
     auto objectToCheck = std::make_unique<FileEdit>("start.txt", "start", 0);
@@ -126,7 +126,7 @@ void checkForSimillarity(FileEdit& objectCreate, const std::string& destination,
         objectToCheck->firstName = iterator->path().filename().string();
         if (*objectToCheck == objectCreate)
         {
-            cout << "This name is already exists ";
+            cout << "This name is already exists enter another one ";
             cin >> title;
             rewind(stdin);
             *nameFile = title;
@@ -139,7 +139,7 @@ void deleteSimillarTypeFile(const std::string& destination)
     std::string fullName = destination + "\\";
     auto toDelete = std::make_unique<FileEdit>("start.txt", "start", 0);
     auto typeToDelete = std::make_unique<FileEdit>("start.txt", "start", 0);
-    cout << "Enter type of file ypu'd like to add ";
+    cout << "Enter type of file ypu'd like to remove ";
     rewind(stdin);
     cin >> toDelete->extension;
     for (const auto& entry : fs::directory_iterator(fullName))
@@ -171,7 +171,7 @@ void newDirectory(std::string* destName)
     }
     rewind(stdin);
     *destName = newDir.getDestination();
-    newDir.createDirectory();
+    newDir.createDirectory(*destName);
 }
 
 void newDirectoryFromFile(std::string* destName)
@@ -185,7 +185,7 @@ void newDirectoryFromFile(std::string* destName)
         std::getline(pathIn, *destName);
     }
     newDir.setDestination(*destName);
-    newDir.createDirectory();
+	newDir.createDirectory(*destName);
     pathIn.close();
 }
 
