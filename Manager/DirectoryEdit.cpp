@@ -15,7 +15,7 @@ void DirectoryEdit::fileUpdate(int numberOfLines, const std::string& destination
 	std::string newName;
 	std::cout << "Enter new name ";
 	std::cin >> newName;
-	fs::path oldPath = fs::path(destination);
+	auto oldPath = fs::path(destination);
 	fs::path newPath = oldPath.parent_path() / newName;
 	std::string name = oldPath.filename().string();
 	fs::rename(oldPath, newPath);
