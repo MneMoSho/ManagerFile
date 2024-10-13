@@ -25,7 +25,8 @@ void DirectoryEdit::fileUpdate(int numberOfLines, const std::string& destination
 
 void DirectoryEdit::fileRead(const std::string& destination)
 {
-    fs::path dirPath(destination);
+
+    fs::path dirPath = destination;
 	fs::path parentPath = dirPath;
 	int count = 0;
 	rewind(stdin);
