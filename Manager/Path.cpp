@@ -12,14 +12,6 @@ void Path::createNewPath(const std::string& name)
 		destination += "\\" + name;
 	}
 }
-void Path::createDirectory(const std::string& destination) const
-{
-	if (!fs::exists(destination))
-	{
-		fs::create_directories(destination);
-	}
-}
-
 std::string Path::getDisk() const
 {
 	return disk;
