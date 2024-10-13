@@ -80,8 +80,8 @@ void DirectoryEdit::lineDelete(const std::string& destination)
 {
 	if (fs::exists(destination))
 	{
-		fs::remove_all(destination);
-		std::cout<<"directory removed\n";
+		fs::remove_all(destination); 
+		std::cout << "directory removed\n";
 	}
 
 }

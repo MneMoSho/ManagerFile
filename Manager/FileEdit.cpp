@@ -75,7 +75,7 @@ void FileEdit::fileRead(const std::string& destination)
 
 void FileEdit::lineDelete(const std::string& destination)
 {
-	int ÒurrentLine = 1;
+	int —ÅurrentLine = 1;
 	int lineToDelete = 0;
 	string Buf;
 	std::string name;
@@ -91,12 +91,12 @@ void FileEdit::lineDelete(const std::string& destination)
 	rewind(stdin);
 	while (std::getline(fin, Buf))
 	{
-		if (ÒurrentLine != lineToDelete)
+		if (—ÅurrentLine != lineToDelete)
 		{
 			fout << Buf << std::endl;
 
 		}
-		++ÒurrentLine;
+		++—ÅurrentLine;
 	}
 	fin.close();
 	fout.close();
