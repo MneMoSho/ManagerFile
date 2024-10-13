@@ -194,7 +194,7 @@ void appendingPartsOfPath(std::string* name, const std::string& destination)
     *name = destination + "\\" + *name;
 }
 
-void countingDirectories(const std::string& diskName, std::filesystem::path parentPath, int *count)
+void countingDirectories(const std::string_view& diskName, std::filesystem::path parentPath, int *count)
 {
     while (diskName != parentPath.string())
     {
