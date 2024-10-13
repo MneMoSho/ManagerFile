@@ -16,9 +16,9 @@ int main()
 	while (modeSelect != '0')
 	{
 		std::cout << "set mode of editing file ";
-		if (!fs::exists("H:\\лфбораторные\\Buf "))
+		if (!fs::exists("H:\\labs\\Buf "))
 		{
-			fs::create_directory("H:\\лфбораторные\\Buf ");
+			fs::create_directory("H:\\labs\\Buf ");
 
 		}
 		jthread parallelreal(movingDelete);
