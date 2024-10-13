@@ -24,4 +24,4 @@ void newDirectory(std::string* destName);
 void newDirectoryFromFile(std::string* destName);
 void chooseDirectory(std::string* destName);
 void appendingPartsOfPath(std::string* name, const std::string& destination);
-void countingDirectories(const std::string& diskName, std::filesystem::path parentPath, int* count);
+void countingDirectories(const std::string& diskName, std::filesystem::path parentPath, int *count);
