@@ -24,7 +24,7 @@ void deleteFile(const std::string& directory)
 
 void movingDelete()
 {
-    for (const auto& entry : fs::directory_iterator("H:\\лфбораторные\\Buf\\"))
+    for (const auto& entry : fs::directory_iterator("H:\\labs\\Buf\\"))
     {
         this_thread::sleep_for(chrono::milliseconds(1000));
         fs::remove_all(entry.path());
@@ -38,7 +38,7 @@ void deleteAfterTime(const std::string& directory)
     rewind(stdin);
     std::cin >> nameOfFile;
     rewind(stdin);
-    std::string endDestination = "H:\\лфбораторные\\Buf\\" + nameOfFile;
+    std::string endDestination = "H:\\labs\\Buf\\" + nameOfFile;
     appendingPartsOfPath(&nameOfFile, directory);
     std::cout << nameOfFile<<"\n";
     std::cout << endDestination <<"\n";
