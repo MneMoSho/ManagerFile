@@ -3,9 +3,10 @@ namespace fs = std::filesystem;
 
 void DirectoryEdit::fileCreate(int numberOfLines, const std::string& name)
 {
-	if (!fs::exists(name))
+	fs::path dirPath = name;
+	if (!fs::exists(dirPath))
 	{
-		fs::create_directories(name);
+		fs::create_directories(dirPath);
 	}
 }
 

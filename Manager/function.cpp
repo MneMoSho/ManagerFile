@@ -24,7 +24,7 @@ void deleteFile(const std::string& directory)
 
 void movingDelete()
 {
-    for (const auto& entry : fs::directory_iterator("H:\\labs\\Buf\\"))
+    for (const auto& entry : fs::directory_iterator("H:\\Course\\Buf"))
     {
         this_thread::sleep_for(chrono::milliseconds(1000));
         fs::remove_all(entry.path());
