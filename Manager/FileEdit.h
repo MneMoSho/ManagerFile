@@ -3,15 +3,15 @@
 
 namespace fs = std::filesystem;
 
-class FileEdit : public FileCRUDOperations, public Path
+class FileEdit : public IOperations, public Path
 {
 public:
 	FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount);
 	~FileEdit();
-	void FileCRUDOperations::fileCreate(int numberOfLines, const std::string& name) override;
-	void FileCRUDOperations::fileUpdate(int numberOfLines, const std::string& destination) override;
-	void FileCRUDOperations::fileRead(const std::string& destination) override;
-	void FileCRUDOperations::lineDelete(const std::string& destination) override;
+	void IOperations::fileCreate(int numberOfLines, const std::string& name) override;
+	void IOperations::fileUpdate(int numberOfLines, const std::string& destination) override;
+	void IOperations::fileRead(const std::string& destination) override;
+	void IOperations::lineDelete(const std::string& destination) override;
 	int checkFile() const;
 	std::string getFirstName() const;
 	void setFirstName(const std::string_view& name);

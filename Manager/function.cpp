@@ -194,7 +194,7 @@ void appendingPartsOfPath(std::string* name, const std::string& destination)
     *name = destination + "\\" + *name;
 }
 
-void countingDirectories(std::string_view& diskName, std::filesystem::path parentPath, int *count)
+void countingDirectories(std::string_view diskName, std::filesystem::path parentPath, int *count)
 {
     while (diskName != parentPath.string())
     {
@@ -232,5 +232,76 @@ void chooseDirectory(std::string* destName)
     else
     {
         std::cout << "You are in the directory ";
+    }
+}
+
+void selectorforFile(int mode, const std::string& destName)
+{
+    int numberOfLines = 0;
+    while (mode != 0)
+    {
+        switch (mode)
+        {
+        case 1:
+            createNewfile(numberOfLines, destName);
+            break;
+        case 2:
+            updateAnExisted(numberOfLines, destName);
+            break;
+        case 3:
+            deleteFromExisting(destName);
+            break;
+        case 4:
+            readFile(destName);
+            break;
+        case 5:
+            deleteFile(destName);
+            break;
+        case 7:
+        {
+            deleteAfterTime(destName);
+            break;
+        }
+        case 8:
+        {
+            addToAnother(destName);
+            break;
+        }
+        case 9:
+        {
+            deleteSimillarTypeFile(destName);
+            break;
+        }
+        case 0:
+        {
+            break;
+        }
+        default:
+            cout << "Enter number from 0 to 9" << "\n";
+        }
+        cin >> mode;
+        cout << "select mode\n 1 to create new file\n 2 to add to an existing\n 3 to delete a particular line\n 4 to display whole document\n 5 to delete text file\n 7 to put into buffer\n 8 to copy full one file to another\n 9 to delete types with simillar extension \n 6 to exit ";
+    }
+}
+
+void selectorForDirectories(int directoryOperations, const std::string& destName)
+{
+    DirectoryEdit directoryEdition;
+    std::cin >> directoryOperations;
+    while (directoryOperations != '0')
+    {
+        switch (directoryOperations)
+        {
+        case 1:
+            directoryEdition.fileUpdate(0, destName);
+            break;
+        case 2:
+            directoryEdition.fileRead(destName);
+            break;
+        case 3:
+            directoryEdition.lineDelete(destName);
+            break;
+        }
+        std::cin >> directoryOperations;
     }
 }

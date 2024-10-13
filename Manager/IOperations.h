@@ -1,6 +1,6 @@
 #include "Header.h"
 
-class FileCRUDOperations
+class IOperations
 {
 public:
 	virtual void fileCreate(int numberOfLines, const std::string& name) = 0;

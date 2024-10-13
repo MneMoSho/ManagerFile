@@ -129,7 +129,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DirectoryEdit.cpp" />
-    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="FileEdit.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
@@ -138,7 +137,7 @@
   <ItemGroup>
     <ClInclude Include="DirectoryEdit.h" />
     <ClInclude Include="FileEdit.h" />
-    <ClInclude Include="FileCRUDOperations.h" />
+    <ClInclude Include="IOperations.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Path.h" />
   </ItemGroup>
