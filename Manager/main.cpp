@@ -116,12 +116,11 @@ int main()
 					directoryEdition.fileRead(destName);
 					break;
 				case 3:
-				{
 					directoryEdition.lineDelete(destName);
+					break;
 				}
-				}
-				break;
 			}
+			break;
 		}
 		parallelreal.join();
 		}

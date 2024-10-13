@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DirectoryEdit.cpp" />
+    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="FileEdit.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
@@ -140,6 +141,9 @@
     <ClInclude Include="FileCRUDOperations.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Path.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
