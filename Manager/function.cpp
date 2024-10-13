@@ -1,6 +1,5 @@
 #include "Header.h"
 #include "FileEdit.h"
-#include "Path.h"
 #include <filesystem>
 using namespace std;
 namespace fs = std::filesystem;
@@ -9,7 +8,7 @@ void deleteFile(const std::string& directory)
 {
     std::string nameBig;
     auto nameOfFile = std::make_shared < std::string>();
-    cout << "Enter destination to the file and name" << "\n";
+    cout << "Enter destination to the file and name " << "\n";
     rewind(stdin);
     std::getline(std::cin, *nameOfFile);
     nameBig = directory + "\\" + *nameOfFile;
@@ -50,7 +49,7 @@ void deleteAfterTime(const std::string& directory)
 int linesNumber(int numberOfLines)
 {
     numberOfLines = 0;
-    cout << "Enter number of Lines";
+    cout << "Enter number of Lines ";
     cin >> numberOfLines;
     return numberOfLines;
 }
@@ -72,23 +71,20 @@ void updateAnExisted(int numberOfLines, const std::string& destination)
 {
     auto objectCreate = std::make_unique<FileEdit>("start.txt", "start", 0);
     numberOfLines = linesNumber(numberOfLines);
-    objectCreate->fileUpdate(numberOfLines, objectCreate->getFirstName(), destination);
+    objectCreate->fileUpdate(numberOfLines, destination);
 }
 
 void deleteFromExisting(const std::string& destination)
 {
-    string Buf;
     auto objectCreate = std::make_unique<FileEdit>("start.txt", "start", 0);
-    int ñurrentLine = 1;
-    int lineToDelete = 0;
-    objectCreate->lineDelete(lineToDelete, Buf, ñurrentLine, destination);
+    objectCreate->lineDelete(destination);
 }
 
 void readFile(const std::string& destination)
 {
     string Buf;
     auto objectCreate = std::make_unique<FileEdit>("start.txt", "start", 0);
-    objectCreate->fileRead(Buf, objectCreate->getFirstName(), destination);
+    objectCreate->fileRead(destination);
 }
 
 void addToAnother(const std::string& destination)
@@ -97,11 +93,11 @@ void addToAnother(const std::string& destination)
     std::string nameToCopy;
     auto fileBegin = std::make_unique<FileEdit>("start.txt", "start", 0);
     auto filetoCopy = std::make_unique<FileEdit>("start.txt", "start", 0);
-    cout << "Enter name of file to which you'd like to add" << " ";
+    cout << "Enter name of file to which you'd like to add " << " ";
     cin >> nameBegin;
     appendingPartsOfPath(&nameBegin, destination);
     fileBegin->setFirstName(nameBegin);
-    cout << "Enter name of file from which you'd like to copy" << " ";
+    cout << "Enter name of file from which you'd like to copy " << " ";
     cin >> nameToCopy;
     appendingPartsOfPath(&nameToCopy, destination);
     filetoCopy->setFirstName(nameToCopy);
@@ -126,7 +122,7 @@ void checkForSimillarity(const FileEdit& objectCreate, const std::string& destin
         objectToCheck->firstName = iterator->path().filename().string();
         if (*objectToCheck == objectCreate)
         {
-            cout << "This name is already exists enter another one";
+            cout << "This name is already exists enter another one ";
             cin >> title;
             rewind(stdin);
             *nameFile = title;
@@ -154,42 +150,87 @@ void deleteSimillarTypeFile(const std::string& destination)
 void newDirectory(std::string *destName)
 {
 	std::string name;
-	Path newDir;
+    DirectoryEdit dirCreation;
 	std::cout << "Enter disk ";
 	std::cin >> name;
-    newDir.setDisk(name);
-    newDir.createWay();
+    dirCreation.setDisk(name);
+    dirCreation.createWay();
+    std::cout << dirCreation.getDestination();
 	std::cout << "Enter folders, press -1 when to stop\n";
 	while (true)
 	{
+        rewind(stdin);
 		std::cin >> name;
         if (name == "-1")
         {
             break;
         }
-		newDir.createNewPath(name);
+        dirCreation.createNewPath(name);
 	}
     rewind(stdin);
-   *destName = newDir.getDestination();
-    newDir.createDirectory();
+   *destName = dirCreation.getDestination();
+   dirCreation.fileCreate(0, *destName);
 }
 
 void newDirectoryFromFile(std::string *destName)
 {
-    rewind(stdin);
 	std::ifstream pathIn;
 	Path newDir;
+    DirectoryEdit dirCreation;
 	pathIn.open("Directory.txt");
 	while (!pathIn.eof())
 	{
 		std::getline(pathIn, *destName);
 	}
+    rewind(stdin);
 	newDir.setDestination(*destName);
-	newDir.createDirectory();
+    std::cout << newDir.getDestination() << "\n";
+    dirCreation.fileCreate(0, *destName);
     pathIn.close();
 }
 
 void appendingPartsOfPath(std::string* name, const std::string& destination)
 {
     *name = destination + "\\" + *name;
+}
+
+void countingDirectories(const std::string& diskName, std::filesystem::path parentPath, int *count)
+{
+    while (diskName != parentPath.string())
+    {
+        *count = *count + 1;
+        rewind(stdin);
+        parentPath = parentPath.parent_path().string();
+    }
+}
+
+void chooseDirectory(std::string* destName)
+{
+    std::string name;
+    DirectoryEdit dirCreation;
+    std::cout << "Enter disk ";
+    std::cin >> name;
+    dirCreation.setDisk(name);
+    dirCreation.createWay();
+    std::cout << "Enter folders, press -1 when to stop\n";
+    while (true)
+    {
+        rewind(stdin);
+        std::cin >> name;
+        if (name == "-1")
+        {
+            break;
+        }
+        dirCreation.createNewPath(name);
+    }
+    *destName = dirCreation.getDestination();
+    std::cout << *destName << "\n";
+    if (!fs::exists(*destName))
+    {
+        dirCreation.fileCreate(0, *destName);
+    }
+    else
+    {
+        std::cout << "You are in the directory ";
+    }
 }

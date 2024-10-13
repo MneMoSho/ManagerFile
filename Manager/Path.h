@@ -4,7 +4,6 @@ class Path
 {
 public:
 	void createWay();
-	void createDirectory() const;
 	void createNewPath(const std::string& name);
 	std::string getDisk() const;
 	void setDisk(std::string_view disk);

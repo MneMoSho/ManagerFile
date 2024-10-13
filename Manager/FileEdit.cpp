@@ -12,7 +12,7 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.open(name);
 	if (int fileOpened = checkFile(); fileOpened != 1)
 	{
-		std::cout << "Error";
+		std::cout << "Error ";
 	}
 	else
 		for (int i = 0; i < numberOfLines; i++)
@@ -24,9 +24,10 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.close();
 }
 
- void FileEdit::fileUpdate(int numberOfLines, std::string name, const std::string& destination)
+ void FileEdit::fileUpdate(int numberOfLines, const std::string& destination)
 {
 	rewind(stdin);
+	std::string name;
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
 	appendingPartsOfPath(&name, destination);
@@ -47,13 +48,15 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.close();
 }
 
-void FileEdit::fileRead(std::string buf, std::string name, const std::string& destination)
+void FileEdit::fileRead(const std::string& destination)
 {
+	std::string name;
+	std::string buf;
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
 	appendingPartsOfPath(&name, destination);
-	fin.open(name);
+	FileEdit::fin.open(name);
 	rewind(stdin);
 	if (int fileOpened = checkFile(); fileOpened != 1)
 	{
@@ -70,8 +73,11 @@ void FileEdit::fileRead(std::string buf, std::string name, const std::string& de
 	fin.close();
 }
 
-void FileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, const std::string& destination)
+void FileEdit::lineDelete(const std::string& destination)
 {
+	int ñurrentLine = 1;
+	int lineToDelete = 0;
+	string Buf;
 	std::string name;
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
@@ -85,12 +91,12 @@ void FileEdit::lineDelete(int lineToDelete, std::string Buf, int currentLine, co
 	rewind(stdin);
 	while (std::getline(fin, Buf))
 	{
-		if (currentLine != lineToDelete)
+		if (ñurrentLine != lineToDelete)
 		{
 			fout << Buf << std::endl;
 
 		}
-		++currentLine;
+		++ñurrentLine;
 	}
 	fin.close();
 	fout.close();
