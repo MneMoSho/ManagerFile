@@ -10,8 +10,6 @@
 #include <winbase.h>
 #include <filesystem>
 
-
-
 void deleteFile(const std::string& directory);
 int linesNumber(int numberOfLines);
 void createNewfile(int numberOfLines, const std::string& destination);
