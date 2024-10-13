@@ -1,19 +1,21 @@
 #include "Header.h"
+#include "DirectoryEdit.h"
+
 namespace fs = std::filesystem;
 
-class FileEdit
+class FileEdit : public FileCRUDOperations, public Path
 {
 public:
 	FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount);
 	~FileEdit();
-	void fileCreate(int numberOfLines, const std::string& name);
-	void fileUpdate(int numberOfLines, std::string name, const std::string& destination);
-	void fileRead(std::string buf, std::string name, const std::string& destination);
-	void lineDelete(int lineToDelete, std::string Buf, int currentLine, const std::string& destination);
+	void FileCRUDOperations::fileCreate(int numberOfLines, const std::string& name) override;
+	void FileCRUDOperations::fileUpdate(int numberOfLines, const std::string& destination) override;
+	void FileCRUDOperations::fileRead(const std::string& destination) override;
+	void FileCRUDOperations::lineDelete(const std::string& destination) override;
 	int checkFile() const;
 	std::string getFirstName() const;
 	void setFirstName(const std::string_view& name);
-	void friend checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string* nameFile);
+	void friend checkForSimillarity(const FileEdit& objectCreate, const std::string& destination, std::string *nameFile);
 	void friend deleteSimillarTypeFile(const std::string& destination);
 	FileEdit& operator += (const FileEdit& fileToCopy)
 	{
@@ -29,7 +31,7 @@ public:
 		return *this;
 	}
 
-	bool operator ==(const FileEdit& nameOfFile) const
+	bool operator ==(const FileEdit &nameOfFile) const
 	{
 		return this->firstName == nameOfFile.firstName;
 	}
