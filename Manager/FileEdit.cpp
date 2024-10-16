@@ -1,11 +1,11 @@
 #include "FileEdit.h"
 using namespace std;
 
-FileEdit::FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount = 0) : totalLineCount(totalLineCount), firstName(firstName), information(information)
-{
-
-}
-FileEdit::~FileEdit() = default;
+//FileEdit::FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount = 0) : firstName(firstName), information(information)
+//{
+//
+//}
+//FileEdit::~FileEdit() = default;
 
 void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 {
@@ -24,13 +24,13 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 	fout.close();
 }
 
- void FileEdit::fileUpdate(int numberOfLines, const std::string& destination)
+ void FileEdit::fileUpdate(int numberOfLines, std::string* destination)
 {
 	rewind(stdin);
 	std::string name;
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
-	appendingPartsOfPath(&name, destination);
+	appendingPartsOfPath(&name, *destination);
 	fout.open(name, std::ofstream::app);
 	if (int fileOpened = checkFile(); fileOpened != 1)
 	{
@@ -50,6 +50,7 @@ void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 
 void FileEdit::fileRead(const std::string& destination)
 {
+	std::cout << destination;
 	std::string name;
 	std::string buf;
 	rewind(stdin);
@@ -73,7 +74,7 @@ void FileEdit::fileRead(const std::string& destination)
 	fin.close();
 }
 
-void FileEdit::lineDelete(const std::string& destination)
+void FileEdit::lineDelete(std::string* destination)
 {
 	int сurrentLine = 1;
 	int lineToDelete = 0;
@@ -82,7 +83,7 @@ void FileEdit::lineDelete(const std::string& destination)
 	rewind(stdin);
 	std::cout << "Enter name of file you'd like to open ";
 	std::cin >> name;
-	appendingPartsOfPath(&name, destination);
+	appendingPartsOfPath(&name, *destination);
 	rewind(stdin);
 	fin.open(name);
 	fout.open("test.txt");

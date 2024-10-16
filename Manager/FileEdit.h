@@ -6,12 +6,12 @@ namespace fs = std::filesystem;
 class FileEdit : public IOperations, public Path
 {
 public:
-	FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount);
-	~FileEdit();
+	//FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount);
+	//~FileEdit();
 	void IOperations::fileCreate(int numberOfLines, const std::string& name) override;
-	void IOperations::fileUpdate(int numberOfLines, const std::string& destination) override;
+	void IOperations::fileUpdate(int numberOfLines, std::string* destination) override;
 	void IOperations::fileRead(const std::string& destination) override;
-	void IOperations::lineDelete(const std::string& destination) override;
+	void IOperations::lineDelete(std::string* destination) override;
 	int checkFile() const;
 	std::string getFirstName() const;
 	void setFirstName(const std::string_view& name);

@@ -13,7 +13,7 @@
 void deleteFile(const std::string& directory);
 int linesNumber(int numberOfLines);
 void createNewfile(int numberOfLines, const std::string& destination);
-void updateAnExisted(int numberOfLines, const std::string& destination);
+void updateAnExisted(int numberOfLines, std::string& destination);
 void deleteFromExisting(const std::string& destination);
 void readFile(const std::string& destination);
 void deleteAfterTime(const std::string& directory);
@@ -25,5 +25,5 @@ void newDirectoryFromFile(std::string* destName);
 void chooseDirectory(std::string* destName);
 void appendingPartsOfPath(std::string* name, const std::string& destination);
 void countingDirectories(std::string_view diskName, std::filesystem::path parentPath, int *count);
-void selectorforFile(int mode, const std::string& destName);
-void selectorForDirectories(int directoryOperations, const std::string& destName);
+void selectorforFile(int mode, std::string& destName);
+void selectorForDirectories(std::string* destName);

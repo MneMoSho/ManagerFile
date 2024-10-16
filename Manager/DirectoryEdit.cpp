@@ -10,16 +10,17 @@ void DirectoryEdit::fileCreate(int numberOfLines, const std::string& name)
 	}
 }
 
-void DirectoryEdit::fileUpdate(int numberOfLines, const std::string& destination)
+void DirectoryEdit::fileUpdate(int numberOfLines, std::string* destination)
 {
 	std::string newName;
 	std::cout << "Enter new name ";
 	std::cin >> newName;
-	auto oldPath = fs::path(destination);
+	auto oldPath = fs::path(*destination);
 	fs::path newPath = oldPath.parent_path() / newName;
 	std::string name = oldPath.filename().string();
 	fs::rename(oldPath, newPath);
 	std::cout << "File is successfully renamed to " << newPath;
+	*destination = newPath.string();
 }
 
 
@@ -58,7 +59,7 @@ void DirectoryEdit::fileRead(const std::string& destination)
 		}
 	}
 	std::cout << "Right now you are in the: " << parentPath.parent_path().string() << "\n";
-	std::cout << "Listing all current directories";
+	std::cout << "Listing all current directories\n";
 	fs::path previousPath;
 	if (fs::exists(dirPath) && fs::is_directory(parentPath))
 	{
@@ -72,18 +73,22 @@ void DirectoryEdit::fileRead(const std::string& destination)
 			}
 			std::cout << p.path().filename().string() << " ";
 		}
+		std::cout << "\n";
 	}
 	else
 	{
 		std::cerr << "The specified path does not exist or is not a directory. " << std::endl;
 	}
 }
-void DirectoryEdit::lineDelete(const std::string& destination)
+void DirectoryEdit::lineDelete(std::string* destination)
 {
-	if (fs::exists(destination))
+	fs::path bigPath;
+	if (fs::exists(*destination))
 	{
-		fs::remove_all(destination);
+		fs::remove_all(*destination);
 		std::cout << "directory removed\n";
 	}
-
+	bigPath = *destination;
+	*destination = bigPath.parent_path().string();
+	std::cout <<"Know you are in" << * destination << "\n";
 }
