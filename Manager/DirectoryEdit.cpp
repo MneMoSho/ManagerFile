@@ -46,7 +46,7 @@ void DirectoryEdit::fileRead(const std::string& destination)
 	int modeSelect = 0;
 	if (parentPath.string() == diskName)
 	{
-		fs::recursive_directory_iterator iter(destination);
+		fs::recursive_directory_iterator iter(dirPath);
 		parentPath = dirPath;
 		count = 0;
 		rewind(stdin);
