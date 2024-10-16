@@ -19,7 +19,7 @@ void DirectoryEdit::fileUpdate(int numberOfLines, std::string* destination)
 	fs::path newPath = oldPath.parent_path() / newName;
 	std::string name = oldPath.filename().string();
 	fs::rename(oldPath, newPath);
-	std::cout << "File is successfully renamed to " << newPath<<"\n";
+	std::cout << "File is successfully renamed to " << newPath << "\n";
 	*destination = newPath.string();
 }
 
@@ -27,11 +27,11 @@ void DirectoryEdit::fileUpdate(int numberOfLines, std::string* destination)
 void DirectoryEdit::fileRead(const std::string& destination)
 {
 
-    fs::path dirPath(destination);
+	fs::path dirPath(destination);
 	fs::path parentPath = dirPath;
 	int count = 0;
 	rewind(stdin);
-	std::string diskName = dirPath.root_name().string()+"\\";
+	std::string diskName = dirPath.root_name().string() + "\\";
 	int numberOfParents = 0;
 	std::cout << diskName;
 	countingDirectories(diskName, parentPath, &count);
@@ -90,5 +90,5 @@ void DirectoryEdit::lineDelete(std::string* destination)
 	}
 	bigPath = *destination;
 	*destination = bigPath.parent_path().string();
-	std::cout <<"now you are in" << * destination << "\n";
+	std::cout << "now you are in" << *destination << "\n";
 }

@@ -241,7 +241,7 @@ void selectorForDirectories(std::string* destName)
 {
 	int directoryOperations = 0;
 	Editor directoryEdition;
-	directoryEdition.setDestination(*destName);
+	directoryEdition.setDestinationEdit(*destName);
 	cout << "Enter mode 1 to change name of your directory 2 to display all files that is in the current folder 3 to delete current directory 0 to exit\n ";
 	std::cin >> directoryOperations;
 	while (directoryOperations != 0)
@@ -250,14 +250,14 @@ void selectorForDirectories(std::string* destName)
 		{
 		case 1:
 			directoryEdition.createDir();
-			*destName = directoryEdition.getDestination();
+			*destName = directoryEdition.getDestinationEdit();
 			break;
 		case 2:
 			directoryEdition.readDir();
 			break;
 		case 3:
 			directoryEdition.deleteDir();
-			*destName = directoryEdition.getDestination();
+			*destName = directoryEdition.getDestinationEdit();
 			break;
 		case 0:
 			break;

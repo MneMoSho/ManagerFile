@@ -63,9 +63,9 @@ int main()
 			selectorForDirectories(&destName);
 			break;
 		}
-		}
 		default:
 			std::cout << "Enter 1, 2 or 3" << "\n";
+		}
 		modeSelect = 0;
 		std::cout << "set mode of editing file ";
 		std::cin >> modeSelect;

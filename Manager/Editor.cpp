@@ -60,19 +60,19 @@ void Editor::deleteFile(const std::string& directory)
 
 void Editor::createDir()
 {
-	std::string value = Editor::getDestination();
+	std::string value = Editor::getDestinationEdit();
 	DirectoryEdit::fileUpdate(0, &value);
-	Editor::setDestination(value);
+	Editor::setDestinationEdit(value);
 }
 
 void Editor::readDir()
 {
-	DirectoryEdit::fileRead(Editor::getDestination());
+	DirectoryEdit::fileRead(Editor::getDestinationEdit());
 }
 
 void Editor::deleteDir()
 {
-	std::string value = Editor::getDestination();
+	std::string value = Editor::getDestinationEdit();
 	DirectoryEdit::lineDelete(&value);
-	Editor::setDestination(value);
+	Editor::setDestinationEdit(value);
 }
