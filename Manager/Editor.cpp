@@ -1,15 +1,15 @@
 #include "Editor.h"
 
-void Editor::setDestination(const std::string& setDest)
+void Editor::setDestinationEdit(std::string_view setDest)
 {
 	destination = setDest;
 }
-std::string Editor::getDestination() const
+std::string Editor::getDestinationEdit() const
 {
 	return destination;
 }
 
-void Editor::createNewFile(const std::string& destination)
+void Editor::createNewFile(const std::string& destName)
 {
 	int numberOfLines = 0;
 	auto objectCreate = std::make_unique<FileEdit>();
@@ -17,27 +17,27 @@ void Editor::createNewFile(const std::string& destination)
 	std::cout << "Enter name of file" << " ";
 	std::cin >> name;
 	objectCreate->setFirstName(name);
-	checkForSimillarity(*objectCreate, destination, &name);
-	name = destination + "\\" + name;
+	checkForSimillarity(*objectCreate, destName, &name);
+	name = destName + "\\" + name;
 	numberOfLines = linesNumber(numberOfLines);
 	FileEdit::fileCreate(numberOfLines, name);
 }
 
-void Editor::updateAnExisted(int numberOfLines, std::string& destination)
+void Editor::updateAnExisted(int numberOfLines, std::string& destName)
 {
 	numberOfLines = linesNumber(numberOfLines);
-	FileEdit::fileUpdate(numberOfLines, &destination);
+	FileEdit::fileUpdate(numberOfLines, &destName);
 }
 
-void Editor::deleteFromExisting(std::string destination)
+void Editor::deleteFromExisting(std::string destName)
 {
-	FileEdit::lineDelete(&destination);
+	FileEdit::lineDelete(&destName);
 }
 
-void Editor::readFile(const std::string& destination)
+void Editor::readFile(const std::string& destName)
 {
 	std::string Buf;
-	FileEdit::fileRead(destination);
+	FileEdit::fileRead(destName);
 }
 
 void Editor::deleteFile(const std::string& directory)

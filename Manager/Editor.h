@@ -5,12 +5,12 @@
 class Editor : public FileEdit, public DirectoryEdit
 {
 public:
-	void setDestination(const std::string& setDestination);
-	std::string getDestination() const;
-	void createNewFile(const std::string& destination);
-	void updateAnExisted(int numberOfLines, std::string& destination);
-	void deleteFromExisting(std::string destination);
-	void readFile(const std::string& destination);
+	void setDestinationEdit(std::string_view setDestination);
+	std::string getDestinationEdit() const;
+	void createNewFile(const std::string& destName);
+	void updateAnExisted(int numberOfLines, std::string& destName);
+	void deleteFromExisting(std::string destName);
+	void readFile(const std::string& destName);
 	void deleteFile(const std::string& directory);
 	void createDir();
 	void readDir();

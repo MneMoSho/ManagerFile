@@ -1,12 +1,6 @@
 #include "FileEdit.h"
 using namespace std;
 
-//FileEdit::FileEdit(const std::string& firstName, const std::string& information, const int totalLineCount = 0) : firstName(firstName), information(information)
-//{
-//
-//}
-//FileEdit::~FileEdit() = default;
-
 void FileEdit::fileCreate(int numberOfLines, const std::string& name)
 {
 	fout.open(name);
