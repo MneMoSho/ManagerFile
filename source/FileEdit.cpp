@@ -1,0 +1,133 @@
+////
+//// Created by Gleb on 24.10.2024.
+////
+//
+//#include "FileEdit.h"
+//
+//using namespace std;
+//
+//void FileEdit::objectCreate(int numberOfLines, const std::string &name) {
+//    widgetToShow = new setNewText;
+//   // connect(widgetToShow, &setNewText::signalToQuit, &loop, &QEventLoop::quit);
+//    widgetToShow->show();
+//    loop.exec();
+//
+//    fout.open(name);
+//    std::string line;
+//    if (int fileOpened = checkFile(); fileOpened != 1) {
+//        std::cout << "Error ";
+//    } else
+//        for (int i = 0; i < numberOfLines; i++) {
+//            widgetToShow->createNewText(&line);
+//            std::cout<<line;
+//            fout << line << "\n";
+//        }
+//        qDebug()<<"FFFFFFFFFFFFFFFFFFF";
+//////        for (int i = 0; i < 2; i++)
+//////        {
+//////            rewind(stdin);
+//////            getline(std::cin, information);
+//////            fout << information << "\n";
+//////        }
+//    fout.close();
+//}
+//
+//void FileEdit::fileUpdate(int numberOfLines, std::string *destination) {
+//    rewind(stdin);
+//    std::string name;
+//    std::cout << "Enter name of file you'd like to open ";
+//    std::cin >> name;
+//    //appendingPartsOfPath(&name, *destination);
+//    fout.open(name, std::ofstream::app);
+//    if (int fileOpened = checkFile(); fileOpened != 1) {
+//        std::cout << "Error";
+//    }
+////    else
+////    {
+////        for (int i = 0; i < numberOfLines; i++)
+////        {
+////            rewind(stdin);
+////            std::getline(std::cin, information);
+////            fout << information << "\n";
+////        }
+////    }
+//    fout.close();
+//}
+//
+//void FileEdit::fileRead(const std::string &destination) {
+//    std::cout << destination;
+//    std::string name;
+//    std::string buf;
+//    rewind(stdin);
+//    std::cout << "Enter name of file you'd like to open ";
+//    std::cin >> name;
+//    appendingPartsOfPath(&name, destination);
+//    FileEdit::fin.open(name);
+//    rewind(stdin);
+//    if (int fileOpened = checkFile(); fileOpened != 1) {
+//        std::cout << "Error";
+//    } else {
+//        while (!fin.eof()) {
+//            std::getline(fin, buf);
+//            std::cout << buf << "\n";
+//        }
+//    }
+//    fin.close();
+//}
+//
+//void FileEdit::lineDelete(std::string *destination) {
+//    int сurrentLine = 1;
+//    int lineToDelete = 0;
+//    string Buf;
+//    std::string name;
+//    rewind(stdin);
+//    std::cout << "Enter name of file you'd like to open ";
+//    std::cin >> name;
+//    appendingPartsOfPath(&name, *destination);
+//    rewind(stdin);
+//    fin.open(name);
+//    fout.open("test.txt");
+//    std::cout << "enter number of line to delete \n";
+//    std::cin >> lineToDelete;
+//    rewind(stdin);
+//    while (std::getline(fin, Buf)) {
+//        if (сurrentLine != lineToDelete) {
+//            fout << Buf << std::endl;
+//
+//        }
+//        ++сurrentLine;
+//    }
+//    fin.close();
+//    fout.close();
+//    fout.open(name);
+//    fin.open("test.txt");
+//    while (std::getline(fin, Buf)) {
+//        fout << Buf << std::endl;
+//    }
+//    fout.close();
+//    fin.close();
+//}
+//
+//int FileEdit::checkFile() const {
+//    int checkFile = 0;
+//    if (fout.is_open() || fin.is_open()) {
+//        checkFile = 1;
+//    }
+//    return checkFile;
+//}
+//
+//std::string FileEdit::getFirstName() const {
+//    return firstName;
+//}
+//
+//void FileEdit::setFirstName(const std::string_view &name) {
+//    firstName = name;
+//}
+//
+//void FileEdit::setLineCount(int numberOfLines) {
+//    totalLineCount = numberOfLines;
+//}
+//
+//int FileEdit::getLineCount() {
+//    return totalLineCount;
+//}
