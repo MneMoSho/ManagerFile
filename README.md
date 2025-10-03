@@ -13,4 +13,3 @@
 
 Проект написан на c++
 
-https://sonarcloud.io/project/overview?id=MneMoSho_ManagerFile
